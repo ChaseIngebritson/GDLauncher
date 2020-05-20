@@ -299,29 +299,36 @@ export default function MyAccountPreferences() {
         >
           Select the preferred amount of memory to use when launching the game
         </Paragraph>
-        <Slider
-          css={`
-            margin: 20px 20px 20px 0;
-          `}
-          onChange={e => dispatch(updateJavaMemory(e))}
-          value={javaMemory}
-          min={1024}
-          max={16384}
-          step={512}
-          marks={marks}
-          valueLabelDisplay="auto"
-        />
-        <InputNumber
-          css={`
-            width: 20%;
-            margin: 20px 0 20px 0;
-          `}
-          onChange={e => dispatch(updateJavaMemory(e))}
-          value={javaMemory}
-          min={1024}
-          max={16384}
-          step={512}
-        />
+        <div>
+          <Slider
+            css={`
+              width: 80%;
+              display: inline-block;
+              margin: 20px 20px 20px 0;
+              float: left;
+            `}
+            onChange={e => dispatch(updateJavaMemory(e))}
+            value={javaMemory}
+            min={1024}
+            max={16384}
+            step={512}
+            marks={marks}
+            valueLabelDisplay="auto"
+          />
+          <InputNumber
+            css={`
+              width: 15%;
+              margin: 20px 0 20px 0;
+              float: right;
+            `}
+            onChange={e => dispatch(updateJavaMemory(e))}
+            value={javaMemory}
+            min={1024}
+            max={16384}
+            step={512}
+            formatter={value => `${value} MB`}
+          />
+        </div>
       </SelectMemory>
       <Hr />
       <JavaCustomArguments>
