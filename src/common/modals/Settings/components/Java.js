@@ -12,7 +12,7 @@ import {
   faList,
   faDesktop
 } from '@fortawesome/free-solid-svg-icons';
-import { Slider, Button, Input, Switch, Select } from 'antd';
+import { Slider, Button, Input, Switch, Select, InputNumber } from 'antd';
 import {
   updateJavaArguments,
   updateJavaMemory,
@@ -188,6 +188,7 @@ export default function MyAccountPreferences() {
                   width: 75%;
                   margin: 0 10px;
                 `}
+                max={16384}
                 onChange={e => dispatch(updateJavaPath(e.target.value))}
                 value={customJavaPath}
               />
@@ -303,15 +304,24 @@ export default function MyAccountPreferences() {
           css={`
             margin: 20px 20px 20px 0;
           `}
-          onAfterChange={e => {
-            dispatch(updateJavaMemory(e));
-          }}
-          defaultValue={javaMemory}
+          onChange={e => dispatch(updateJavaMemory(e))}
+          value={javaMemory}
           min={1024}
           max={16384}
           step={512}
           marks={marks}
           valueLabelDisplay="auto"
+        />
+        <InputNumber
+          css={`
+            width: 20%;
+            margin: 20px 0 20px 0;
+          `}
+          onChange={e => dispatch(updateJavaMemory(e))}
+          value={javaMemory}
+          min={1024}
+          max={16384}
+          step={512}
         />
       </SelectMemory>
       <Hr />
