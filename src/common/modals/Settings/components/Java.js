@@ -188,7 +188,6 @@ export default function MyAccountPreferences() {
                   width: 75%;
                   margin: 0 10px;
                 `}
-                max={16384}
                 onChange={e => dispatch(updateJavaPath(e.target.value))}
                 value={customJavaPath}
               />
